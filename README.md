@@ -6,8 +6,8 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 - For software, Cisco Packet Tracer is needed for simulation, NAMO will need to be installed to set up the Web Server, and MAMP will be need to be installed to set up the DNS. 
 
 ## Add End Devices (PCs/laptops/printers/tablets/etc)
- - Connect laptops to switches using Ethernet cables and allow them to connect
- - 
+ - Connect laptops to switches using Ethernet cables and select allow them to connect when prompted
+   
 ## IP Assignments
   - Assign IP addresses to laptop
   - On a Mac, navigate to System Settings --> Network --> 
