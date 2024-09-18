@@ -26,9 +26,10 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 - At this point MAMP should be installed already, open MAMP from the Applications folder and select "Nginx"
 <img width="537" alt="Screenshot 2024-09-18 at 4 42 51 PM" src="https://github.com/user-attachments/assets/681d937b-fa4b-43c9-8361-2141e394c808">
 
-- Navigate to system preferences in the upper left hand corner of MAMP and then select Ports
-- 
+- Navigate to system preferences in the upper left hand corner of MAMP and then select Ports, in the Nginx Port, change out 8000 for 80
+<img width="537" alt="Screenshot 2024-09-18 at 4 45 26 PM" src="https://github.com/user-attachments/assets/00e13266-161c-4ec8-9802-270e2d04aaea">
 
+- Navigate back to the home of MAMP by closing out of System Preferences and press start, if it says stop just stop it and press start
 ## Add a Router to Connect Networks
 - Insert a router to enable communication between different networks.
 
