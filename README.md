@@ -12,7 +12,7 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
   - Assign IP addresses to laptop
   - On a Mac, navigate to System Settings --> Network --> Select "10/100/1000" --> Details --> TCP/IP
 <img width="716" alt="Screenshot 2024-09-18 at 2 02 42 PM" src="https://github.com/user-attachments/assets/2a7204d4-0776-4246-b815-81416a325649">
-<img width="668" alt="Screenshot 2024-09-18 at 2 04 29 PM" src="https://github.com/user-attachments/assets/68105069-9ddf-454f-b263-a23b72c6703e">
+
 ## Connect the End Devices to the Switch
 - Use Ethernet cables to connect the end devices to the switch.
 
