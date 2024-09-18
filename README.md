@@ -14,8 +14,8 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 <img width="716" alt="Screenshot 2024-09-18 at 2 02 42 PM" src="https://github.com/user-attachments/assets/2a7204d4-0776-4246-b815-81416a325649">
 <img width="668" alt="Screenshot 2024-09-18 at 2 11 15 PM" src="https://github.com/user-attachments/assets/58767253-e0f2-45fa-88e4-22f482036896">
 
-  - Next, set IP address on the laptops in one LAN to an IP in the range 192.168.0.0/26 and in the other LAN that will be connected later via Router, set the IP to one in the range 172.16.0.0/24 and set the subnet masks to 255.255.255.0
-  - 
+  - Next, set IP address on the laptops in one LAN to an IP in the range 192.168.0.0/26 and in the other LAN that will be connected later via Router, set the IP to one in the range 172.16.0.0/24 and set the subnet masks to 255.255.255.192
+<img width="668" alt="Screenshot 2024-09-18 at 2 04 29 PM" src="https://github.com/user-attachments/assets/8988f26b-ec90-4d5a-9ee8-6d74670a7ca4">
 
 ## Connect the End Devices to the Switch
 - Use Ethernet cables to connect the end devices to the switch.
