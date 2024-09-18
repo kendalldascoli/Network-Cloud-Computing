@@ -23,7 +23,10 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 
 ## Set up a Network Web Server
 - Choose a laptop in your LAN that will be the Web Server, the other will be the DNS server in later steps
-- At this point MAMP should be installed already, open MAMP from the Applications folder
+- At this point MAMP should be installed already, open MAMP from the Applications folder and select "Nginx"
+<img width="537" alt="Screenshot 2024-09-18 at 4 42 51 PM" src="https://github.com/user-attachments/assets/681d937b-fa4b-43c9-8361-2141e394c808">
+
+- Navigate to system preferences in the upper left hand corner of MAMP and then select Ports
 - 
 
 ## Add a Router to Connect Networks
