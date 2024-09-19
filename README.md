@@ -1,5 +1,6 @@
 <h1>System Architecture Guide</h1>
 
+
 <h1>Step by Step Configuration</h1>
 Objective: Configure a network consisting of two separate LAN’s connected through a router
 
