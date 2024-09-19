@@ -38,7 +38,11 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 - Test that this is working by having the alternate computer navigate to a browser and input the IP of the laptop that set up the Web Server, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
 
 ## Setting up the DNS Server
-- On the computer that was not used for the Web Server, open NAMO and hit create record
+- On the computer that was not used for the Web Server, open NAMO and hit create record, the screen should now show as follows.
+  <img width="585" alt="Screenshot 2024-09-18 at 5 26 34 PM" src="https://github.com/user-attachments/assets/99211c1e-57b4-479f-8885-862997fbbfe5">
+
+- Add a Host Name called "capstoneconsulting.com" and set the IP address to individual
+- In IPv4, input the address of the laptop designated as the DNS Server, in other words the one not used for the Web Server
 ## Add a Router to Connect Networks
 - Insert a router to enable communication between different networks.
 
