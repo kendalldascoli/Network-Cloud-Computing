@@ -33,9 +33,9 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 <img width="537" alt="Screenshot 2024-09-18 at 4 50 53 PM" src="https://github.com/user-attachments/assets/f61410b3-49b7-407c-94a3-14e77a6eb8c5">
 
 - Next, navigate to the Terminal and enter (for Mac users) /Applications/MAMP/htdocs/index.html
-    - This will create an index.html in the directory for your     operating system
+    - This will create an index.html in the directory for your operating system
 - Once that is complete, go to Virtual Studio Code or a text/code editor and add/replace "Welcome to Capstone Consulting"
-- Test that this is working by having the alternate computer navigate to a browser and input the IP of the laptop that set up the Web Server, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
+- Test that this is working by first having the computer hosting the Web Server navigate to a browser and input its own IP, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
 
 ## Setting up the DNS Server
 - On the computer that was not used for the Web Server, open NAMO and hit create record, the screen should now show as follows.
@@ -49,6 +49,7 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
     - Go to system settings --> network --> select the connected ethernet interface --> details --> DNS --> Remove and existing DNS Servers -> Add the IP address of the laptop that is assigned to act as the DNS server (192.168.0.65)
  - Confirm DNS Server recognition by navigating to the Terminal or CLI and type in networksetup -listallnetworkservices
 networksetup -getdnsservers {NETWORK INTERFACE}
+- Confirm that the laptop hosting the DNS server can access the website by navigating to google.com and searching "capstoneconsulting.com", if it goes through and the page says "Welcome to Capstone Consulting" then it was a success and you can move on.
 ## Follow the previous instructions for the other LAN as well with the other two computers prior to connecting via the Router,(use IP range of 172.16.0.0/24) once this is completed, proceed to the next step
 
 ## Add a Router to Connect Networks
@@ -119,7 +120,7 @@ networksetup -getdnsservers {NETWORK INTERFACE}
   - Verify that both PCs are on the same network segment (e.g., same subnet).
   - Check IP configuration on each PC using:
     ```bash
-    ipconfig (Windows) or ifconfig (Linux/Mac)
+    ifconfig (Linux/Mac)
     ```
   - Ensure the IP addresses are not in conflict (i.e., no two devices on the network should have the same IP address).
 
@@ -202,9 +203,6 @@ networksetup -getdnsservers {NETWORK INTERFACE}
 
 ---
 
-If the issue persists after following these steps, further investigation into network settings, hardware, and topology may be necessary.
-
 
 <h1>Retrospective</h1>
-Throughout this project, I configured a network using Cisco Packet Tracer, created a step by step configuration guide, and created an FAQ section addressing different issues that are commonly encountered. Initially, I ran into some issues with Packet Tracer itself, it wouldn’t open from my Applications however I learned to go into my Activity Monitor and force quit it because it was running in the background of my computer. Once I got started on configuring the network, I gained a deeper understanding of IP addresses and how they connect different devices to one another within a LAN and within  
-
+Throughout this project, I configured a network using Cisco Packet Tracer, created a step by step configuration guide, and created an FAQ section addressing different issues that are commonly encountered. Initially, I ran into some issues with Packet Tracer itself, it wouldn’t open from my Applications however I learned to go into my Activity Monitor and force quit it because it was running in the background of my computer.This situation highlighted the importance of understanding the tools at my disposal and not being discouraged by technical glitches. Once I got started on configuring the network, I gained a deeper understanding of IP addresses and how they connect different devices to one another within a LAN and within a WAN. I came across a few issues when testing the IP addresses via ping in my Terminal, most were easy fixes. For example, me and my group member had accidentally set the same IP for our computers and our Ethernet cables were not fully secured. I also encountered some issues when setting up the Web Server, I was struggling with setting up MAMP however I quickly realized attention to detail in the port settings is critical and after I ensured that Nginx was set to 80 instead of 8000, the isssues were resolved. I learned that when creating the index.html in the operating system, you can use Virtual Studio Code OR a text/code editor to input the desired message. Furthermore in this step, my group encountered an issue when attempting to access the Web Server from the computer hosting the DNS server. The webpage wouldnt go through however when the computer hosting the Web Server attempted to access the website, it would go through. We re-traced our steps and ensured the DNS server and Web server were configured correctly however the issue still persisted which led us to believe that it was an error in computer settings. This is when we realized that the computer hosting the Web server had a Firewall up in the settings of their computer, once this was deactivated, the DNS Server host was able to access the website. 
