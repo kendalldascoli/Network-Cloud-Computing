@@ -34,7 +34,9 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 
 - Next, navigate to the Terminal and enter (for Mac users) /Applications/MAMP/htdocs/index.html
     - This will create an index.html in the directory for your     operating system
-- Once that is complete, 
+- Once that is complete, go to Virtual Studio Code or a text/code editor and add/replace "Welcome to Capstone Consulting"
+- Test that this is working by have the alternate computer navigate to a browser and input the IP of the laptop that set up the Web Server, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
+- 
 ## Add a Router to Connect Networks
 - Insert a router to enable communication between different networks.
 
