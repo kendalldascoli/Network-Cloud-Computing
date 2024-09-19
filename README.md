@@ -1,5 +1,6 @@
 <h1>System Architecture Guide</h1>
 
+![System_Architecture_Diagram](https://github.com/user-attachments/assets/e3de59c3-ad75-4975-922a-17c5a70675b3)
 
 <h1>Step by Step Configuration</h1>
 Objective: Configure a network consisting of two separate LAN’s connected through a router
