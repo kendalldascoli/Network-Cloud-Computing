@@ -35,8 +35,10 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 - Next, navigate to the Terminal and enter (for Mac users) /Applications/MAMP/htdocs/index.html
     - This will create an index.html in the directory for your     operating system
 - Once that is complete, go to Virtual Studio Code or a text/code editor and add/replace "Welcome to Capstone Consulting"
-- Test that this is working by have the alternate computer navigate to a browser and input the IP of the laptop that set up the Web Server, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
-- 
+- Test that this is working by having the alternate computer navigate to a browser and input the IP of the laptop that set up the Web Server, if it goes through to a screen that says "Welcome to Capstone Consulting" then it was a success. If it doesnt, please refer to the FAQ section.
+
+## Setting up the DNS Server
+- On the computer that was not used for the Web Server, open NAMO and hit create record
 ## Add a Router to Connect Networks
 - Insert a router to enable communication between different networks.
 
@@ -63,8 +65,11 @@ No connection
 Router is not connecting to switch
  - Port status is not on
  - Default gateway not set
+Website is not accessible
+ - Make sure there is no Firewall up on Web Server host computer
 PC1 cannot ping the DNS Server
  - Ensure default gateway is set
+
 
 <h1>Retrospective</h1>
 Throughout this project, I configured a network using Cisco Packet Tracer, created a step by step configuration guide, and created an FAQ section addressing different issues that are commonly encountered. Initially, I ran into some issues with Packet Tracer itself, it wouldn’t open from my Applications however I learned to go into my Activity Monitor and force quit it because it was running in the background of my computer. Once I got started on configuring the network, I gained a deeper understanding of IP addresses
