@@ -42,21 +42,68 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
   <img width="585" alt="Screenshot 2024-09-18 at 5 26 34 PM" src="https://github.com/user-attachments/assets/99211c1e-57b4-479f-8885-862997fbbfe5">
 
 - Add a Host Name called "capstoneconsulting.com" and set the IP address to individual
-- In IPv4, input the address of the laptop designated as the DNS Server, in other words the one not used for the Web Server
+- In IPv4, input the address of the laptop designated as the DNS Server, in other words the one not used for the Web Server. It should look like the below and then save your work.
+  <img width="585" alt="Screenshot 2024-09-18 at 5 45 39 PM" src="https://github.com/user-attachments/assets/89d81ee5-a2f6-4d16-afac-8163fe921e94">
+
+- Next,set the DNS server on each laptop to the IP address of that laptop that is assigned to act as the DNS server
+    - Go to system settings --> network --> select the connected ethernet interface --> details --> DNS --> Remove and existing DNS Servers -> Add the IP address of the laptop that is assigned to act as the DNS server (192.168.0.65)
+ - Confirm DNS Server recognition by navigating to the Terminal or CLI and type in networksetup -listallnetworkservices
+networksetup -getdnsservers {NETWORK INTERFACE}
+## Follow the previous instructions for the other LAN as well with the other two computers prior to connecting via the Router,(use IP range of 172.16.0.0/24) once this is completed, proceed to the next step
+
 ## Add a Router to Connect Networks
-- Insert a router to enable communication between different networks.
+- Insert a router to enable communication between different networks
+- In order to prepare the router for connection, add a power cable to the router and turn it on
 
 ## Connect the Switches to the Router
-- Use Ethernet cables to connect the switches to the router.
+- Use Ethernet cables to connect the switches from each LAN that we just configured to the router.
 
+## Establish communication from the switches to the router
+- Once communication is established by following the next steps, you can receive data,commands, or configurations with the router.
+- Install driver for serial adapter onto your computer on each LAN
+- Open terminal and type ls/dev/*usb*
+- screen /dev/USB-SERIAL-CONNECTION BAUD-RATE - this is searching for all devices connected to the system that have usb in their names
+- Enter this 2x
+- When exiting the session Ctrl+a then Ctrl+\
 ## Configure IPs on the Router
 - Assign IP addresses to the router interfaces.
+- Access the router's CLI and input the following
+- Router> enable
+Router# configure terminal
+Router(config)# interface (ex. GigabitEthernet 0/1 - or whever you want to set the IP address)
+Router(config-if)# ip address 192.168.0.1 255.255.255.0
 
 ## Set Port Status to ON on the Router
-- Enable the ports on the router for communication.
+- Enable the ports on the router for communication by following these commands in the CLI of the router
+- Router(config-if)# no shutdown
+Router# write memory
+Router# copy running-config startup-config
+Router# show ip interface brief
 
+## Getting into the correct mode
+- Enter User Exec mode and have access to all status and configuration commands by typing
+ - Router>enable in Terminal
+ - Router#
+- The password will be LMU
+- You will then enter the hostname (ex. router01)
+## Viewing a summary of router interfaces
+- In Terminal type
+ - do show ip interface brief
+## Configure Router Interfaces
+- In terminal type
+ - interface gigabitEthernet 0/0
+ - ip address 15.255.255.1 255.255.255.0
+ - description ## to switch01 ##
+ - no shutdown
+- View the running config in RAM by typing
+ - show running-config
+- Save the configuration to NVRAM by typing
+ - write memory
+- Confirm the config was permanently saved
+ - show startup-config
 ## Set Default Gateway on All End Devices
 - Set the default gateway on each end device to the router’s `GigabitEthernet` interface it is connected to.
+- Navigate to System Preferences --> Network --> TCP/IP tab --> 
 
 
 <h1>FAQ</h1>
