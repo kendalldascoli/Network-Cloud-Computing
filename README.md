@@ -68,60 +68,143 @@ networksetup -getdnsservers {NETWORK INTERFACE}
 ## Configure IPs on the Router
 - Assign IP addresses to the router interfaces.
 - Access the router's CLI and input the following
-- Router> enable
-Router# configure terminal
-Router(config)# interface (ex. GigabitEthernet 0/1 - or whever you want to set the IP address)
-Router(config-if)# ip address 192.168.0.1 255.255.255.0
+    - Router> enable
+    - Router# configure terminal
+    - Router(config)# interface (ex. GigabitEthernet 0/1 - or whever you want to set the IP address)
+    - Router(config-if)# ip address 192.168.0.1 255.255.255.0
 
 ## Set Port Status to ON on the Router
 - Enable the ports on the router for communication by following these commands in the CLI of the router
-- Router(config-if)# no shutdown
-Router# write memory
-Router# copy running-config startup-config
-Router# show ip interface brief
+  - Router(config-if)# no shutdown
+  - Router# write memory
+  - Router# copy running-config startup-config
+  - Router# show ip interface brief
 
 ## Getting into the correct mode
 - Enter User Exec mode and have access to all status and configuration commands by typing
- - Router>enable in Terminal
- - Router#
+  - Router>enable in Terminal
+  - Router#
 - The password will be LMU
 - You will then enter the hostname (ex. router01)
 ## Viewing a summary of router interfaces
 - In Terminal type
- - do show ip interface brief
+  - do show ip interface brief
 ## Configure Router Interfaces
 - In terminal type
- - interface gigabitEthernet 0/0
- - ip address 15.255.255.1 255.255.255.0
- - description ## to switch01 ##
- - no shutdown
+  - interface gigabitEthernet 0/0
+  - ip address 15.255.255.1 255.255.255.0
+  - description ## to switch01 ##
+  - no shutdown
 - View the running config in RAM by typing
- - show running-config
+  - show running-config
 - Save the configuration to NVRAM by typing
- - write memory
-- Confirm the config was permanently saved
- - show startup-config
+  - write memory
+- Confirm the config was permanently saved by typing
+  - show startup-config
 ## Set Default Gateway on All End Devices
 - Set the default gateway on each end device to the router’s `GigabitEthernet` interface it is connected to.
-- Navigate to System Preferences --> Network --> TCP/IP tab --> 
+- Navigate to System Preferences --> Network --> TCP/IP tab --> Select Manually for Configure IPv4
+   - Enter the IP address, Subnet Mask, and the Router's IP address (as the default gateway)
+   - Click OK and then Apply to save the settings
 
 
 <h1>FAQ</h1>
 
-PC 1 is not pinging PC 2
- - Ensure IPs are set for both PCs
- - Ensure ethernet cables are secured
-No connection
- - Ping test a website by opening the terminal and # ping google.com
-Router is not connecting to switch
- - Port status is not on
- - Default gateway not set
-Website is not accessible
- - Make sure there is no Firewall up on Web Server host computer
-PC1 cannot ping the DNS Server
- - Ensure default gateway is set
+# Network Troubleshooting Guide
+
+## Common Networking Issues and Steps to Resolve Them
+
+### 1. PC1 is Not Pinging PC2:
+- **Ensure IP addresses are set for both PCs:**
+  - Verify that both PCs are on the same network segment (e.g., same subnet).
+  - Check IP configuration on each PC using:
+    ```bash
+    ipconfig (Windows) or ifconfig (Linux/Mac)
+    ```
+  - Ensure the IP addresses are not in conflict (i.e., no two devices on the network should have the same IP address).
+
+- **Ensure ethernet cables are secured:**
+  - Check the physical connection between both PCs and the network (switch/router).
+  - Look for link lights (green/orange LEDs) on the network interface card (NIC) to confirm proper connectivity.
+  - Test the cables on another device to rule out any cable issues.
+
+### 2. No Connection:
+- **Ping test a website to verify internet connectivity:**
+  - Open a terminal and run the following command to ping an external website (Google, in this case):
+    ```bash
+    ping google.com
+    ```
+  - If you receive no response or timeouts:
+    - Ensure your DNS settings are configured correctly.
+    - Verify your network interface is up and running (`ipconfig /all` on Windows, `ifconfig` or `ip a` on Linux/Mac).
+    - Restart the network adapter or try reconnecting to the network.
+
+### 3. Router is Not Connecting to Switch:
+- **Check if the port status is on:**
+  - Inspect the switch and router to ensure the appropriate port is enabled.
+  - Use switch management tools (CLI, web interface) to check port status and activity.
+  - Try swapping to a different port on the switch or router to isolate potential hardware issues.
+
+- **Ensure the default gateway is set:**
+  - Verify the default gateway IP is configured properly on all devices in the network.
+  - On most systems, this can be checked using:
+    ```bash
+    ipconfig (Windows) or route -n (Linux/Mac)
+    ```
+  - If the default gateway is not set, configure it manually through the network settings or command line.
+
+### 4. Website is Not Accessible:
+- **Check that there is no firewall blocking traffic on the web server host computer:**
+  - Ensure the firewall on the web server is not blocking HTTP/HTTPS traffic (ports 80 and 443).
+  - On Windows, check the Windows Firewall settings; on Linux, check `iptables` or `ufw` rules:
+    ```bash
+    sudo ufw status (for Ubuntu/Debian)
+    sudo iptables -L
+    ```
+  - Temporarily disable the firewall to test connectivity, then re-enable it with appropriate rules.
+  - Ensure any security groups or policies (for cloud-hosted servers) allow inbound traffic.
+
+### 5. PC1 Cannot Ping the DNS Server:
+- **Ensure the default gateway is set on PC1:**
+  - Verify that PC1 has the correct gateway configured, as this is required to route traffic outside the local network.
+  - Check for DNS configuration issues as well:
+    - Ensure PC1 is using the correct DNS server IP.
+    - Test by using an external DNS server, such as Google's DNS (`8.8.8.8`), to see if it's a local DNS issue.
+
+- **Additional Steps to Consider:**
+  - Try resetting the network adapter on PC1:
+    ```bash
+    ipconfig /release && ipconfig /renew (Windows)
+    sudo dhclient -r && sudo dhclient (Linux)
+    ```
+  - Use `tracert` (Windows) or `traceroute` (Linux/Mac) to identify where the connection is breaking down between PC1 and the DNS server.
+
+---
+
+### Additional Ideas:
+- **Check for IP Conflicts:**
+  - If multiple devices are assigned the same IP address, communication may fail. Use the command below to identify devices with conflicting IPs:
+    ```bash
+    arp -a
+    ```
+
+- **Verify Subnet Mask:**
+  - Incorrect subnet masks can prevent devices on the same network from communicating. Double-check the subnet configuration on each device.
+
+- **Test with Another Device:**
+  - If pinging between PC1 and PC2 fails, try pinging another known working device to isolate whether the issue is with the PC or network hardware.
+
+- **Update Drivers/Firmware:**
+  - Ensure that the network drivers on PCs and the firmware on the router/switch are up to date. Outdated software can cause connectivity issues.
+
+- **Check for VLAN Issues:**
+  - If VLANs (Virtual Local Area Networks) are configured, ensure both PCs are on the same VLAN or that inter-VLAN routing is enabled.
+
+---
+
+If the issue persists after following these steps, further investigation into network settings, hardware, and topology may be necessary.
 
 
 <h1>Retrospective</h1>
-Throughout this project, I configured a network using Cisco Packet Tracer, created a step by step configuration guide, and created an FAQ section addressing different issues that are commonly encountered. Initially, I ran into some issues with Packet Tracer itself, it wouldn’t open from my Applications however I learned to go into my Activity Monitor and force quit it because it was running in the background of my computer. Once I got started on configuring the network, I gained a deeper understanding of IP addresses
+Throughout this project, I configured a network using Cisco Packet Tracer, created a step by step configuration guide, and created an FAQ section addressing different issues that are commonly encountered. Initially, I ran into some issues with Packet Tracer itself, it wouldn’t open from my Applications however I learned to go into my Activity Monitor and force quit it because it was running in the background of my computer. Once I got started on configuring the network, I gained a deeper understanding of IP addresses and how they connect different devices to one another within a LAN and within  
 
