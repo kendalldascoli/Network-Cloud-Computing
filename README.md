@@ -29,7 +29,12 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 - Navigate to system preferences in the upper left hand corner of MAMP and then select Ports, in the Nginx Port, change out 8000 for 80
 <img width="537" alt="Screenshot 2024-09-18 at 4 45 26 PM" src="https://github.com/user-attachments/assets/00e13266-161c-4ec8-9802-270e2d04aaea">
 
-- Navigate back to the home of MAMP by closing out of System Preferences and press start, if it says stop just stop it and press start
+- Navigate back to the home of MAMP by pressing Ok and closing out of System Preferences and press start, if it says stop just stop it and press start. MAMP should look like the below image
+<img width="537" alt="Screenshot 2024-09-18 at 4 50 53 PM" src="https://github.com/user-attachments/assets/f61410b3-49b7-407c-94a3-14e77a6eb8c5">
+
+- Next, navigate to the Terminal and enter (for Mac users) /Applications/MAMP/htdocs/index.html
+    - This will create an index.html in the directory for your     operating system
+- Once that is complete, 
 ## Add a Router to Connect Networks
 - Insert a router to enable communication between different networks.
 
@@ -45,11 +50,6 @@ Objective: Configure a network consisting of two separate LAN’s connected thro
 ## Set Default Gateway on All End Devices
 - Set the default gateway on each end device to the router’s `GigabitEthernet` interface it is connected to.
 
-## Configure the Web Server
-1. Open MAMP.
-2. Select Nginx as the web server.
-3. Update Nginx port from `8888` to `80` in **Preferences -> Ports -> Nginx Port: 80 -> OK**.
-4. Click `Start`. If only `Stop` is available, press `Stop` first, then click `Start`.
 
 <h1>FAQ</h1>
 
